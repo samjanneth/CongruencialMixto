@@ -1,0 +1,53 @@
+package congruencialmixto;
+
+/**
+ *
+ * @author Samantha
+ */
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+
+public class CongruencialMixto {
+
+
+    public static void main(String[] args) {
+        // TODO code application logic here
+
+        int x0 = Integer.valueOf(JOptionPane.showInputDialog(null, "Ingrese Semilla X0:"));
+        int a = Integer.valueOf(JOptionPane.showInputDialog(null, "Ingrese Multiplicador a:"));
+        int c = Integer.valueOf(JOptionPane.showInputDialog(null, "Constante Adiptiva c:"));
+        int m = Integer.valueOf(JOptionPane.showInputDialog(null, "Modulo m: "));
+
+        int periodo = 1;
+        int strikes = 0;
+        
+        List<Integer> resultados = new ArrayList<>();
+        
+        while (true) {
+            int operacion = ((a * x0) + c) % m;
+
+            if (resultados.contains(operacion)) {
+                strikes++;
+                if (strikes == 2) {
+                    break;
+             
+                
+                }
+                 
+            }
+
+            resultados.add(operacion);
+            x0 = operacion;
+            System.out.println("Operacion = " + operacion);
+            
+            periodo++;
+
+        }
+
+        System.out.println("El periodo es " + (periodo - 2));
+    }
+
+}
